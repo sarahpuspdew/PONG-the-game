@@ -3,4 +3,4 @@
 
 
 ### The 20 Games Challenge
-  This project is a part of [The 20 Games Challenge](https://20_games_challenge.gitlab.io/), made to learn more about Godot Game Engine
+  This project is a part of [The 20 Games Challenge](https://20_games_challenge.gitlab.io/)
