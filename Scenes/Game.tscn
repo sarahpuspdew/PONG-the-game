@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=3 uid="uid://sa5t4loeqw1u"]
+
+[ext_resource type="PackedScene" uid="uid://b2o75yponwcta" path="res://Scenes/UI/HUD.tscn" id="1_vftwe"]
+[ext_resource type="Script" path="res://Scripts/Goal.gd" id="2_kwvv6"]
+[ext_resource type="Texture2D" uid="uid://bmnyssp7vo7il" path="res://Assets/Graphics/separator.png" id="3_otcts"]
+[ext_resource type="PackedScene" uid="uid://dffpnnx8sga84" path="res://Scenes/Paddle.tscn" id="4_u7s8g"]
+[ext_resource type="Texture2D" uid="uid://egraytdnhqi2" path="res://Assets/Graphics/left_pallete.png" id="5_6wwkm"]
+[ext_resource type="Texture2D" uid="uid://bryorb5qxrqbg" path="res://Assets/Graphics/right_pallete.png" id="6_ccsqf"]
+[ext_resource type="PackedScene" uid="uid://cmglwap1wb2r4" path="res://Scenes/Ball.tscn" id="7_b05te"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ely4n"]
+b = Vector2(640, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_10ml0"]
+b = Vector2(0, 480)
+
+[node name="Game" type="Node2D"]
+process_mode = 1
+
+[node name="HUD" parent="." instance=ExtResource("1_vftwe")]
+
+[node name="Walls" type="Node2D" parent="."]
+position = Vector2(320, 240)
+
+[node name="TopBorder" type="StaticBody2D" parent="Walls"]
+position = Vector2(-320, -241.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TopBorder"]
+shape = SubResource("SegmentShape2D_ely4n")
+debug_color = Color(0.603922, 0.0156863, 0.137255, 1)
+
+[node name="BottomBorder" type="StaticBody2D" parent="Walls"]
+position = Vector2(-320, 241.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/BottomBorder"]
+shape = SubResource("SegmentShape2D_ely4n")
+debug_color = Color(0.603922, 0.0156863, 0.137255, 1)
+
+[node name="Goals" type="Node2D" parent="."]
+position = Vector2(319, 240)
+
+[node name="LeftBorder" type="Area2D" parent="Goals"]
+position = Vector2(-321, -240)
+script = ExtResource("2_kwvv6")
+for_player_point = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goals/LeftBorder"]
+shape = SubResource("SegmentShape2D_10ml0")
+
+[node name="RightBorder" type="Area2D" parent="Goals"]
+position = Vector2(323, -240)
+script = ExtResource("2_kwvv6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goals/RightBorder"]
+shape = SubResource("SegmentShape2D_10ml0")
+
+[node name="Seperator" type="Sprite2D" parent="."]
+position = Vector2(320, 240)
+scale = Vector2(1, 1.2)
+texture = ExtResource("3_otcts")
+
+[node name="P1" parent="." instance=ExtResource("4_u7s8g")]
+position = Vector2(25, 240)
+
+[node name="Sprite2D" parent="P1" index="0"]
+texture = ExtResource("5_6wwkm")
+
+[node name="P2" parent="." instance=ExtResource("4_u7s8g")]
+position = Vector2(615, 240)
+player = 1
+
+[node name="Sprite2D" parent="P2" index="0"]
+texture = ExtResource("6_ccsqf")
+
+[node name="Ball" parent="." instance=ExtResource("7_b05te")]
+position = Vector2(320, 240)
+speed = 350.0
+max_speed = 500.0
+
+[editable path="P1"]
+[editable path="P2"]

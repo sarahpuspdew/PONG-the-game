@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckrpgktivaxky"]
+
+[ext_resource type="FontFile" uid="uid://dpgoawwq0wv4d" path="res://Assets/Fonts/Retro Gaming.ttf" id="1_vpga5"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(320, 240)
+
+[node name="Frame" type="ReferenceRect" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 576.0
+offset_bottom = 448.0
+border_color = Color(1, 1, 1, 1)
+editor_only = false
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 32.0
+offset_right = 480.0
+offset_bottom = 97.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 75
+theme_override_fonts/font = ExtResource("1_vpga5")
+theme_override_font_sizes/font_size = 48
+text = "SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 192.0
+offset_right = 448.0
+offset_bottom = 384.0
+theme_override_constants/separation = 130
+
+[node name="MaxScore" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Title" type="Label" parent="VBoxContainer/MaxScore"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_vpga5")
+theme_override_font_sizes/font_size = 18
+text = "Max Score"
+
+[node name="Count" type="SpinBox" parent="VBoxContainer/MaxScore"]
+layout_mode = 2
+min_value = 10.0
+max_value = 50.0
+value = 10.0
+update_on_text_changed = true
+
+[node name="Save&Back" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_vpga5")
+text = "SAVE AND BACK"
